@@ -2,7 +2,6 @@ import EventEmitter from "./EventEmitter";
 export default class Time extends EventEmitter {
   constructor() {
     super();
-
     //setup
     this.start = new Date();
     this.current = this.start;

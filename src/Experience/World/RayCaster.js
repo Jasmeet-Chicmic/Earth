@@ -28,18 +28,33 @@ export default class RayCaster {
       false
     );
   }
+  open   =   ()=>{
+    this.camera.instance.position.setZ(this.isIntersected[0].object.position.z)
+    this.camera.instance.position.setX(this.isIntersected[0].object.position.x)
+    this.camera.instance.position.setY(this.isIntersected[0].object.position.y)
+
+console.log("opened");
+  }
   onMouseClick = (event) => {
     let touchabeobjects = ["1", "2", "3", "4"];
     if (this.isIntersected.length) {
       switch (this.isIntersected[0].object.name) {
         case touchabeobjects[1]:
-          open();
+
+        this.open();
+
           break;
         case touchabeobjects[0]:
+          this.open();
+
           break;
         case touchabeobjects[2]:
+
+        this.open();
+
           break;
         case touchabeobjects[3]:
+          this.open();
           break;
         default:
           break;
