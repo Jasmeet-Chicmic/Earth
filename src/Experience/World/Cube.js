@@ -1,7 +1,7 @@
 import Experience from "../Experience.js";
 import * as THREE from "three";
 export default class Cube {
-  constructor(direction,name) {
+  constructor(direction, name) {
     this.experience = new Experience();
     this.camera = this.experience.camera;
     this.scene = this.experience.scene;
@@ -11,7 +11,7 @@ export default class Cube {
     console.log("this.atmosphere", this.atmosphereRadius);
     this.setGeomatery();
     this.setMaterial();
-    this.setMesh(direction,name);
+    this.setMesh(direction, name);
   }
 
   setGeomatery(object) {
@@ -22,7 +22,7 @@ export default class Cube {
     this.cubeMaterial = new THREE.MeshBasicMaterial({ color: "red" });
   }
 
-  setMesh(direction,name) {
+  setMesh(direction, name) {
     this.cube = new THREE.Mesh(this.cubeGeometry, this.cubeMaterial);
     this.cube.name = name;
     this.experience.cubes.push(this.cube);
@@ -39,8 +39,8 @@ export default class Cube {
         break;
 
       case "xy":
-        this.cube.position.setX(-this.atmosphereRadius * 0.6);
-        this.cube.position.setY(-this.atmosphereRadius * 0.6);
+        this.cube.position.setX(-this.atmosphereRadius * 0.4);
+        this.cube.position.setY(-this.atmosphereRadius * 0.4);
         break;
     }
 

@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import Experience from "../Experience";
+import { gsap } from "gsap";
 export default class RayCaster {
   constructor() {
     this.raycaster = new THREE.Raycaster();
@@ -28,18 +29,34 @@ export default class RayCaster {
       false
     );
   }
+  open = () => {
+    gsap.to(this.camera.instance.position, {
+      duration: 3,
+      x: this.isIntersected[0].object.position.x / 0.9,
+      y: this.isIntersected[0].object.position.y / 0.9,
+      z: this.isIntersected[0].object.position.z / 0.9,
+    });
+    // this.camera.instance.position.setZ();
+    // this.camera.instance.position.setX();
+    // this.camera.instance.position.setY();
+
+    console.log("opened");
+  };
   onMouseClick = (event) => {
     let touchabeobjects = ["1", "2", "3", "4"];
     if (this.isIntersected.length) {
       switch (this.isIntersected[0].object.name) {
         case touchabeobjects[1]:
-          open();
+          this.open();
           break;
         case touchabeobjects[0]:
+          this.open();
           break;
         case touchabeobjects[2]:
+          this.open();
           break;
         case touchabeobjects[3]:
+          this.open();
           break;
         default:
           break;
