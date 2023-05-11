@@ -4,7 +4,7 @@ export default class Renderer {
   constructor() {
     this.experience = new Experience();
     this.sizes = this.experience.sizes;
-    this.scene = this.experience.scene;
+    // this.scene = cscene;
     this.canvas = this.experience.canvas;
     this.camera = this.experience.camera;
     this.setInstance();
@@ -32,6 +32,6 @@ export default class Renderer {
   }
 
   update() {
-    this.instance.render(this.scene, this.camera.instance);
+    this.instance.render(this.experience.scene, this.camera.instance);
   }
 }

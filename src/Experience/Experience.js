@@ -7,7 +7,8 @@ import World from "./World/World";
 import Resources from "./Utils/Resources";
 import sources from "./sources";
 import Debug from "./Utils/Debug";
-import RayCaster from "./World/Raycaster";
+import CameraMovement from "./World/CameraMovement";
+import Scenes from "./Scenes";
 let instance = null;
 export default class Experience {
   constructor(canvas) {
@@ -15,6 +16,7 @@ export default class Experience {
       return instance;
     }
     instance = this;
+    this.scenes = [];
     this.canvas = canvas;
     this.cubes = [];
     this.debug = new Debug();
@@ -28,7 +30,8 @@ export default class Experience {
 
     window.experience = new Experience();
     //Scene creatition
-    this.scene = new THREE.Scene();
+    this.sceneClass = new Scenes("earth");
+    this.scene = this.sceneClass.scene;
 
     //resources
     this.resources = new Resources(sources);
@@ -44,8 +47,8 @@ export default class Experience {
 
     //renderer
     this.renderer = new Renderer();
-    //raycaster
-    this.raycaster = new RayCaster();
+    //CameraMovement
+    this.CameraMovement = new CameraMovement();
 
     //time tick events
   }
@@ -53,7 +56,7 @@ export default class Experience {
   update() {
     this.camera.update();
     this.world.update();
-    this.raycaster.update();
+    this.CameraMovement.update();
     this.renderer.update();
   }
   resize() {
