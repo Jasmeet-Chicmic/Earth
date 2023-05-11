@@ -7,6 +7,7 @@ import World from "./World/World";
 import Resources from "./Utils/Resources";
 import sources from "./sources";
 import Debug from "./Utils/Debug";
+import RayCaster from "./World/Raycaster";
 let instance = null;
 export default class Experience {
   constructor(canvas) {
@@ -15,6 +16,7 @@ export default class Experience {
     }
     instance = this;
     this.canvas = canvas;
+    this.cubes = [];
     this.debug = new Debug();
     console.log("Experience", this.canvas);
 
@@ -42,6 +44,8 @@ export default class Experience {
 
     //renderer
     this.renderer = new Renderer();
+    //raycaster
+    this.raycaster = new RayCaster();
 
     //time tick events
   }
@@ -49,6 +53,7 @@ export default class Experience {
   update() {
     this.camera.update();
     this.world.update();
+    this.raycaster.update();
     this.renderer.update();
   }
   resize() {
@@ -71,7 +76,7 @@ export default class Experience {
     });
     this.camera.orbitControl.dispose();
     this.renderer.instance.dispose();
-    if(this.debug.active){
+    if (this.debug.active) {
       this.debug.gui.destroy();
     }
   }

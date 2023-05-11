@@ -1,7 +1,7 @@
 import Experience from "../Experience.js";
 import * as THREE from "three";
 export default class Cube {
-  constructor(direction) {
+  constructor(direction,name) {
     this.experience = new Experience();
     this.camera = this.experience.camera;
     this.scene = this.experience.scene;
@@ -11,7 +11,7 @@ export default class Cube {
     console.log("this.atmosphere", this.atmosphereRadius);
     this.setGeomatery();
     this.setMaterial();
-    this.setMesh(direction);
+    this.setMesh(direction,name);
   }
 
   setGeomatery(object) {
@@ -22,9 +22,10 @@ export default class Cube {
     this.cubeMaterial = new THREE.MeshBasicMaterial({ color: "red" });
   }
 
-  setMesh(direction) {
+  setMesh(direction,name) {
     this.cube = new THREE.Mesh(this.cubeGeometry, this.cubeMaterial);
-
+    this.cube.name = name;
+    this.experience.cubes.push(this.cube);
     switch (direction) {
       case "x":
         this.cube.position.setX(this.atmosphereRadius * 0.6);
