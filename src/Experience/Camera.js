@@ -35,6 +35,7 @@ export default class Camera {
   }
 
   update() {
+    this
     this.orbitControl.update();
   }
 }

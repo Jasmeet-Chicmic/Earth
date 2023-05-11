@@ -16,7 +16,7 @@ export default class Resources extends EventEmitter {
     this.loaded = 0;
 
     this.setLoaders();
-    this.startLoading()
+    this.startLoading();
   }
 
   setLoaders() {
@@ -27,40 +27,37 @@ export default class Resources extends EventEmitter {
   }
 
   startLoading() {
+    console.log("Loadded");
     for (let source of this.sources) {
-        // console.log(source);
-        switch(source.type){
-                case "gltfModel":
-                    this.loaders.gltfLoader.load(source.path,
-                        (file)=>{
-                           this.sourceLoaded(source,file)
-                        })
-                break;
-
-                case "texture":
-                    this.loaders.textureLoader.load(source.path,
-                        (file)=>{
-                            this.sourceLoaded(source,file)
-                        })
-                break;
-
-                case "cubeTexture":
-                    this.loaders.cubeLoader.load(source.path,
-                        (file)=>{
-                            this.sourceLoaded(source,file)
-                        })
-                break;
-
-        }
       
+      switch (source.type) {
+        case "gltfModel":
+          this.loaders.gltfLoader.load(source.path, (file) => {
+            this.sourceLoaded(source, file);
+            console.log("Loadded", file);
+          });
+          break;
+
+        case "texture":
+          this.loaders.textureLoader.load(source.path, (file) => {
+            this.sourceLoaded(source, file);
+          });
+          break;
+
+        case "cubeTexture":
+          this.loaders.cubeLoader.load(source.path, (file) => {
+            this.sourceLoaded(source, file);
+          });
+          break;
+      }
     }
   }
 
-  sourceLoaded(source,file){
+  sourceLoaded(source, file) {
     this.items[source.name] = file;
     this.loaded++;
-    if(this.loaded == this.toLoad){
-        this.trigger("resourcesLoaded");
+    if (this.loaded == this.toLoad) {
+      this.trigger("resourcesLoaded");
     }
-  };
+  }
 }
