@@ -8,6 +8,7 @@ import Resources from "./Utils/Resources";
 import sources from "./sources";
 import Debug from "./Utils/Debug";
 import RayCaster from "./World/Raycaster";
+import Scenes from "./Scenes";
 let instance = null;
 export default class Experience {
   constructor(canvas) {
@@ -15,6 +16,7 @@ export default class Experience {
       return instance;
     }
     instance = this;
+    this.scenes = [];
     this.canvas = canvas;
     this.cubes = [];
     this.debug = new Debug();
@@ -28,7 +30,8 @@ export default class Experience {
 
     window.experience = new Experience();
     //Scene creatition
-    this.scene = new THREE.Scene();
+    this.sceneClass = new Scenes("earth");
+    this.scene = this.sceneClass.scene;
 
     //resources
     this.resources = new Resources(sources);
