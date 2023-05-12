@@ -38,6 +38,7 @@ export default class Experience {
 
     //camera
     this.camera = new Camera();
+    console.log(this.camera,"afterr main generation ");
     this.time = new Time();
     this.time.on("tick", () => {
       this.update();
@@ -54,6 +55,7 @@ export default class Experience {
   }
 
   update() {
+    console.log(this.camera,"in update main generation ");
     this.camera.update();
     this.world.update();
     this.CameraMovement.update();

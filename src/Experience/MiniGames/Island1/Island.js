@@ -4,6 +4,7 @@ import Sceneloader from "../../Utils/sceneLoader";
 import Experience from "../../Experience";
 import Resources from "../../Utils/Resources";
 import Environment from "../../World/Environment";
+import Camera from "../../Camera";
 export default class Island1{
     constructor(){
         this.scene = new THREE.Scene();
@@ -15,8 +16,8 @@ export default class Island1{
       new Environment();
     }
     addElements=()=>{
-      let model = this.experience.resources.items["home_of_an_exiled_seeress"].scene;
-      console.log(model.animation);
+      let model = this.experience.resources.items["portal2"].scene;
+      // console.log(model.animation);
 
       model.traverse(function (node) {
 
@@ -28,17 +29,21 @@ export default class Island1{
             // console.log(node.animation.length)
 
             // node.material.side = THREE.DoubleSide
-            node.material.depthWrite = true;
+           
+            node.material.depthWrite=true
             node.material.transparent = false;
             // node.material.wireframe = true; 
             // node.material.opacity = 1
-            console.log(node)
+            // console.log(node)
             // if(node.a)
             //node.material.transparent = false
         }
     })
-      console.log(model);
-      this.experience.scene.add(model)
+     
+      console.log(this.experience.camera.instance);
+      this.experience.camera=new Camera(42,4)
+      // this.experience.camera.instance.near =10;
+      this.experience.scene=model
       console.log(
       );
     }

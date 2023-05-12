@@ -32,6 +32,6 @@ export default class Renderer {
   }
 
   update() {
-    this.instance.render(this.experience.scene, this.camera.instance);
+    this.instance.render(this.experience.scene, this.experience.camera.instance);
   }
 }

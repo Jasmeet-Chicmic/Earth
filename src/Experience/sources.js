@@ -29,4 +29,9 @@ export default [
     type: "gltfModel",
     path: "/models/sea_keep_lonely_watcher/scene.gltf",
   },
+  {
+    name: "portal2",
+    type: "gltfModel",
+    path: "/models/portal2/scene.gltf",
+  }
 ];

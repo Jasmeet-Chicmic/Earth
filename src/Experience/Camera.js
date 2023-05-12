@@ -2,22 +2,22 @@ import Experience from "./Experience";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 export default class Camera {
-  constructor() {
+  constructor(fov=42,near=0.2,far=      1000000000   ) {
     this.experience = new Experience();
     this.sizes = this.experience.sizes;
     this.scene = this.experience.scene;
     this.canvas = this.experience.canvas;
 
-    this.setInstance();
+    this.setInstance(fov,near,far);
     this.setOrbitControl();
   }
 
-  setInstance() {
+  setInstance(fov,near,far) {
     this.instance = new THREE.PerspectiveCamera(
-      45,
+      fov,
       this.sizes.width / this.sizes.height,
-      0.2,
-      1000000000
+      near,
+      far
     );
     this.instance.position.set(6, 4, 6);
     this.experience.scene.add(this.instance);
@@ -35,7 +35,6 @@ export default class Camera {
   }
 
   update() {
-    this
     this.orbitControl.update();
   }
 }
