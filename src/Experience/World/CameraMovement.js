@@ -62,6 +62,7 @@ export default class CameraMovement {
   };
   onMouseClick = (event) => {
     this.touchabeobjects = this.experience.cubes;
+    console.log(this.touchabeobjects);
     if (this.isIntersected.length) {
       for (let i = 0; i < this.touchabeobjects.length; i++) {
         if (this.isIntersected[0].object.name == this.touchabeobjects[i].name) {
