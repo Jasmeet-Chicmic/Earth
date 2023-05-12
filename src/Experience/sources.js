@@ -32,7 +32,7 @@ export default [
   {
     name: "portal2",
     type: "gltfModel",
-    path: "/models/portal2/scene.gltf",
+    path: "/models/portal2/portal2.gltf",
   },
   {
     name: "background",

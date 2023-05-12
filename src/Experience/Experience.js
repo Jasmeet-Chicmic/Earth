@@ -55,7 +55,7 @@ export default class Experience {
   }
 
   update() {
-    console.log(this.camera,"in update main generation ");
+    // console.log(this.camera,"in update main generation ");
     this.camera.update();
     this.world.update();
     this.CameraMovement.update();

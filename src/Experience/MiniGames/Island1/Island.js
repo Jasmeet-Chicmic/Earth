@@ -5,6 +5,7 @@ import Experience from "../../Experience";
 import Resources from "../../Utils/Resources";
 import Environment from "../../World/Environment";
 import Camera from "../../Camera";
+import {gsap} from   "gsap"
 export default class Island1{
     constructor(){
         this.scene = new THREE.Scene();
@@ -29,7 +30,10 @@ export default class Island1{
             // console.log(node.animation.length)
 
             // node.material.side = THREE.DoubleSide
-           
+           if(node.parent.name=="cube.001"){
+            console.log("ajskbfgjkadsb");
+node.scale.set(200,109,1000009)
+           }
             node.material.depthWrite=true
             node.material.transparent = false;
             // node.material.wireframe = true; 
@@ -43,8 +47,18 @@ export default class Island1{
       console.log(this.experience.camera.instance);
       this.experience.camera=new Camera(42,4)
       // this.experience.camera.instance.near =10;
-      this.experience.scene=model
+      this.experience.scene.add(model)
       console.log(
       );
+      this.moveCamera()
+    }
+    moveCamera() {
+
+      gsap.to(this.experience.camera.instance.position, {
+        duration: 4,
+        x:              10000,
+        y:              10000,
+        z:              10000,
+      });
     }
 }

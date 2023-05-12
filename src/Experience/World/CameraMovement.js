@@ -99,6 +99,6 @@ export default class CameraMovement {
   };
   update() {
     this.raycaster.setFromCamera(this.mouse, this.camera.instance);
-    this.isIntersected = this.raycaster.intersectObjects(this.targetcubes);
+    this.isIntersected = this.raycaster.intersectObjects(this.experience.cubes);
   }
 }
