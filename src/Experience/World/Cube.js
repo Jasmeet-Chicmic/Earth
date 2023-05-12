@@ -8,13 +8,13 @@ export default class Cube {
     this.earth = this.experience.world.earth.earth;
     this.atmosphereRadius =
       this.earth.scene.children[0].children[0].children[2].geometry.boundingSphere.radius;
-    console.log("this.atmosphere", this.atmosphereRadius);
-    this.setGeomatery();
+    // console.log("this.atmosphere", this.atmosphereRadius);
+    this.setGeometry();
     this.setMaterial();
     this.setMesh(direction, name);
   }
 
-  setGeomatery(object) {
+  setGeometry(object) {
     this.cubeGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.1);
   }
 

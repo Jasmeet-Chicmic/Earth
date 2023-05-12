@@ -27,13 +27,13 @@ export default class Resources extends EventEmitter {
   }
 
   startLoading() {
-    console.log("Loadded");
+    // console.log("Loadded");
     for (let source of this.sources) {
       switch (source.type) {
         case "gltfModel":
           this.loaders.gltfLoader.load(source.path, (file) => {
             this.sourceLoaded(source, file);
-            console.log("Loadded", file);
+            // console.log("Loadded", file);
           });
           break;
 
