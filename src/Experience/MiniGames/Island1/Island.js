@@ -28,7 +28,12 @@ export default class Island1{
         // console.log(node.animation.length)
 
         // node.material.side = THREE.DoubleSide
-
+        if(node.name=="cube.001"){
+          console.log("ajskbfgjkadsb");
+node.scale.set(200,109,1000009)
+         }
+          node.material.depthWrite=true
+          node.material.transparent = false;
         node.material.depthWrite = true;
         node.material.transparent = false;
         // node.material.wireframe = true;
@@ -40,12 +45,7 @@ export default class Island1{
     });
 
             // node.material.side = THREE.DoubleSide
-           if(node.parent.name=="cube.001"){
-            console.log("ajskbfgjkadsb");
-node.scale.set(200,109,1000009)
-           }
-            node.material.depthWrite=true
-            node.material.transparent = false;
+           
             // node.material.wireframe = true; 
             // node.material.opacity = 1
             // console.log(node)
