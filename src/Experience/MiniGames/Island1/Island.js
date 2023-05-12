@@ -1,6 +1,6 @@
 import * as THREE from "three";
 import Scenes from "../../Scenes";
-import Sceneloader from "../../Utils/sceneLoader";
+import Sceneloader from "../../Utils/Sceneloader";
 import Experience from "../../Experience";
 import Resources from "../../Utils/Resources";
 import Environment from "../../World/Environment";
@@ -20,14 +20,24 @@ export default class Island1{
       let model = this.experience.resources.items["portal2"].scene;
       // console.log(model.animation);
 
-      model.traverse(function (node) {
+    model.traverse(function (node) {
+      if (node.isMesh) {
+        // console.log(node.name)
 
-        if (node.isMesh) {
+        // console.log(node.parent)
+        // console.log(node.animation.length)
 
-            // console.log(node.name)
+        // node.material.side = THREE.DoubleSide
 
-            // console.log(node.parent)
-            // console.log(node.animation.length)
+        node.material.depthWrite = true;
+        node.material.transparent = false;
+        // node.material.wireframe = true;
+        // node.material.opacity = 1
+        // console.log(node)
+        // if(node.a)
+        //node.material.transparent = false
+      }
+    });
 
             // node.material.side = THREE.DoubleSide
            if(node.parent.name=="cube.001"){
@@ -41,8 +51,7 @@ node.scale.set(200,109,1000009)
             // console.log(node)
             // if(node.a)
             //node.material.transparent = false
-        }
-    })
+  
      
       console.log(this.experience.camera.instance);
       this.experience.camera=new Camera(42,4)

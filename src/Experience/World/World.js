@@ -12,7 +12,7 @@ export default class World {
     //Test cube
 
     this.resources.on("resourcesLoaded", () => {
-      console.log("resource loaded");
+      // console.log("resource loaded");
       this.earth = new Earth();
       this.cube = new Cube(this.cubeDirection[0], "island1");
       this.cube = new Cube(this.cubeDirection[1], "island2");

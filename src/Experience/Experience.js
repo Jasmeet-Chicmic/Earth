@@ -20,7 +20,7 @@ export default class Experience {
     this.canvas = canvas;
     this.cubes = [];
     this.debug = new Debug();
-    console.log("Experience", this.canvas);
+    // console.log("Experience", this.canvas);
 
     //resize events
     this.sizes = new Sizes();
@@ -35,10 +35,10 @@ export default class Experience {
 
     //resources
     this.resources = new Resources(sources);
-   
+
     //camera
     this.camera = new Camera();
-    console.log(this.camera,"afterr main generation ");
+    // console.log(this.camera, "afterr main generation ");
     this.time = new Time();
     this.time.on("tick", () => {
       this.update();

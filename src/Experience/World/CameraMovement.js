@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import Experience from "../Experience";
 import { gsap } from "gsap";
-import Sceneloader from "../Utils/sceneLoader";
+import Sceneloader from "../Utils/Sceneloader";
 import Scenes from "../Scenes";
 import Island1 from "../MiniGames/Island1/Island";
 import Island2 from "../MiniGames/Island2/Island";
@@ -10,7 +10,7 @@ export default class CameraMovement {
     this.raycaster = new THREE.Raycaster();
     this.experience = new Experience();
     this.camera = this.experience.camera;
-
+    this.sceneLoader = new Sceneloader();
     this.targetcubes = this.experience.cubes;
     this.isIntersected = [];
     this.mouse = new THREE.Vector2(0, 0);
@@ -35,62 +35,40 @@ export default class CameraMovement {
   }
 
   islandSelection(name) {
-    switch (name) {
-      case this.touchabeobjects[0]:
-        new Island1();
-        break;
-
-      case this.touchabeobjects[1]:
-        new Island2();
-        break;
-
-      // case this.touchabeobjects[2]:
-      //   new Island3();
-      //   break;
-
-      // case this.touchabeobjects[3]:
-      //   new Island4();
-      //   break;
-    }
+    this.sceneLoader.loadScene(name);
   }
+
   open = (name) => {
-    gsap
-      .to(this.camera.instance.position, {
-        duration: 3,
-        x: this.isIntersected[0].object.position.x / 0.9,
-        y: this.isIntersected[0].object.position.y / 0.9,
-        z: this.isIntersected[0].object.position.z / 0.9,
-      })
-      .then(() => {
-        this.islandSelection(name);
-      });
+    if (name.slice(0, name.length - 1) == "island") {
+      gsap
+        .to(this.camera.instance.position, {
+          duration: 3,
+          x: this.isIntersected[0].object.position.x / 0.9,
+          y: this.isIntersected[0].object.position.y / 0.9,
+          z: this.isIntersected[0].object.position.z / 0.9,
+        })
+        .then(() => {
+          this.islandSelection(name);
+        });
+    } else {
+      this.islandSelection(name);
+    }
 
     // this.camera.instance.position.setZ();
     // this.camera.instance.position.setX();
     // this.camera.instance.position.setY();
 
-    console.log("opened");
+    // console.log("opened");
   };
   onMouseClick = (event) => {
-    this.touchabeobjects = ["island1", "island2", "island3", "island4"];
+    this.touchabeobjects = this.experience.cubes;
     if (this.isIntersected.length) {
-      switch (this.isIntersected[0].object.name) {
-        case this.touchabeobjects[1]:
-          this.open(this.touchabeobjects[1]);
-          break;
-        case this.touchabeobjects[0]:
-          this.open(this.touchabeobjects[0]);
-          break;
-        case this.touchabeobjects[2]:
-          this.open(this.touchabeobjects[2]);
-          break;
-        case this.touchabeobjects[3]:
-          this.open(this.touchabeobjects[3]);
-          break;
-        default:
-          break;
+      for (let i = 0; i < this.touchabeobjects.length; i++) {
+        if (this.isIntersected[0].object.name == this.touchabeobjects[i].name) {
+          this.open(this.isIntersected[0].object.name);
+        }
       }
-      console.log("Mesh clicked!", this.isIntersected);
+      // console.log("Mesh clicked!", this.isIntersected);
     }
   };
   onMouseMove = (event) => {
@@ -98,7 +76,7 @@ export default class CameraMovement {
     this.mouse.y = -1 * (event.clientY / window.innerHeight) * 2 + 1;
   };
   update() {
-    this.raycaster.setFromCamera(this.mouse, this.camera.instance);
+    this.raycaster.setFromCamera(this.mouse, this.experience.camera.instance);
     this.isIntersected = this.raycaster.intersectObjects(this.experience.cubes);
   }
 }
