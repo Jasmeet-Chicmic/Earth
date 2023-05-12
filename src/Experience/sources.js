@@ -33,5 +33,11 @@ export default [
     name: "portal2",
     type: "gltfModel",
     path: "/models/portal2/scene.gltf",
-  }
+  },
+  {
+    name: "background",
+    type: "cubeTexture",
+    path: "/textures/environmentMap/MainBackgroundCubeTexture/",
+    pictures: ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
+  },
 ];

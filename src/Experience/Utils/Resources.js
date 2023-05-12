@@ -29,7 +29,6 @@ export default class Resources extends EventEmitter {
   startLoading() {
     console.log("Loadded");
     for (let source of this.sources) {
-      
       switch (source.type) {
         case "gltfModel":
           this.loaders.gltfLoader.load(source.path, (file) => {
@@ -45,9 +44,11 @@ export default class Resources extends EventEmitter {
           break;
 
         case "cubeTexture":
-          this.loaders.cubeLoader.load(source.path, (file) => {
-            this.sourceLoaded(source, file);
-          });
+          this.loaders.cubeLoader
+            .setPath(source.path)
+            .load(source.pictures, (file) => {
+              this.sourceLoaded(source, file);
+            });
           break;
       }
     }
@@ -55,6 +56,7 @@ export default class Resources extends EventEmitter {
 
   sourceLoaded(source, file) {
     this.items[source.name] = file;
+
     this.loaded++;
     if (this.loaded == this.toLoad) {
       this.trigger("resourcesLoaded");
