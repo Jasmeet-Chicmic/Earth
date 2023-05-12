@@ -29,4 +29,10 @@ export default [
     type: "gltfModel",
     path: "/models/sea_keep_lonely_watcher/scene.gltf",
   },
+  {
+    name: "background",
+    type: "cubeTexture",
+    path: "/textures/environmentMap/MainBackgroundCubeTexture/",
+    pictures: ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
+  },
 ];

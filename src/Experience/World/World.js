@@ -8,15 +8,18 @@ export default class World {
     this.experience = new Experience();
     this.scene = this.experience.scene;
     this.resources = this.experience.resources;
-    this.cubeDirection = ["x", "y", "z","xy"];
+    this.cubeDirection = ["x", "y", "z", "xy"];
     //Test cube
 
     this.resources.on("resourcesLoaded", () => {
+      console.log("resource loaded");
       this.earth = new Earth();
-      this.cube = new Cube(this.cubeDirection[0],"island1");
-      this.cube = new Cube(this.cubeDirection[1],"island2");
-      this.cube = new Cube(this.cubeDirection[2],"island3");
-      this.cube = new Cube(this.cubeDirection[3],"island4");
+      this.cube = new Cube(this.cubeDirection[0], "island1");
+      this.cube = new Cube(this.cubeDirection[1], "island2");
+      this.cube = new Cube(this.cubeDirection[2], "island3");
+      this.cube = new Cube(this.cubeDirection[3], "island4");
+      this.experience.scene.background =
+        this.experience.resources.items["background"];
       this.environment = new Environment();
     });
   }

@@ -15,15 +15,15 @@ export default class Environment {
     this.experience.scene.add(this.ambientLight);
   }
   setSunLight() {
-    this.sunLight = new THREE.DirectionalLight("#ffffff", 1);
-    this.sunLightHelper  = new THREE.DirectionalLightHelper(this.sunLight);
-    this.experience.scene.add(this.sunLightHelper);
+    this.sunLight = new THREE.DirectionalLight("#ffffff", 4);
+    // this.sunLightHelper = new THREE.DirectionalLightHelper(this.sunLight);
+    // this.experience.scene.add(this.sunLightHelper);
 
     this.sunLight.castShadow = true;
     this.sunLight.shadow.camera.far = 15;
     this.sunLight.shadow.mapSize.set(1024, 1024);
     this.sunLight.shadow.normalBias = 0.05;
-    this.sunLight.position.set(10,10,100);
+    this.sunLight.position.set(10, 10, 100);
     this.experience.scene.add(this.sunLight);
   }
 

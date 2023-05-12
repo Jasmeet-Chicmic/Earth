@@ -35,7 +35,7 @@ export default class Experience {
 
     //resources
     this.resources = new Resources(sources);
-
+   
     //camera
     this.camera = new Camera();
     this.time = new Time();

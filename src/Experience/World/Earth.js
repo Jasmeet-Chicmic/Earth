@@ -10,6 +10,7 @@ export default class Earth {
     this.resources = this.experience.resources;
     this.earth = null;
     this.earth = this.resources.items["Earth"];
+    console.log(this.resources.items, "from earth.js");
     // Setup
     this.addModel(this.earth);
   }
