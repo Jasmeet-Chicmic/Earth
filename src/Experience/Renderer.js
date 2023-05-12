@@ -32,6 +32,10 @@ export default class Renderer {
   }
 
   update() {
-    this.instance.render(this.experience.scene, this.experience.camera.instance);
+    // console.log(this.experience.scene, "from update");
+    this.instance.render(
+      this.experience.scene,
+      this.experience.camera.instance
+    );
   }
 }

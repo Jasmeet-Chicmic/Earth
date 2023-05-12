@@ -10,11 +10,10 @@ export default class Island2 {
   constructor() {
     this.scene = new THREE.Scene();
     this.experience = new Experience();
-    let scene = new Scenes("island2");
+     this.scenes = new Scenes("island2");
     this.sceneloader = new Sceneloader();
-    this.sceneloader.loadScene(scene.scene);
-    this.addElements();
-    new Environment();
+    // this.sceneloader.loadScene(scene.scene);
+    // this.addElements();
   }
   addElements = () => {
     let model = this.experience.resources.items["sea_house"].scene;
@@ -40,6 +39,7 @@ export default class Island2 {
     this.experience.camera = new Camera(42, 4);
     // this.experience.camera.instance.near =10;
     // this.experience.scene = model;
+      // this.experience.camera = new Camera(42, 4);
     this.moveCamera();
   };
 
