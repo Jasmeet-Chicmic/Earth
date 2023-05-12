@@ -1,4 +1,4 @@
-import * as THREE from "three"
+import * as THREE from "three";
 import Scenes from "../../Scenes";
 import Sceneloader from "../../Utils/sceneLoader";
 import Experience from "../../Experience";

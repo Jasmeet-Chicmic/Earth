@@ -13,11 +13,10 @@ export default class World {
 
     this.resources.on("resourcesLoaded", () => {
       this.earth = new Earth();
-
-      this.cube = new Cube(this.cubeDirection[0],"1");
-      this.cube = new Cube(this.cubeDirection[1],"2");
-      this.cube = new Cube(this.cubeDirection[2],"3");
-      this.cube = new Cube(this.cubeDirection[3],"4");
+      this.cube = new Cube(this.cubeDirection[0],"island1");
+      this.cube = new Cube(this.cubeDirection[1],"island2");
+      this.cube = new Cube(this.cubeDirection[2],"island3");
+      this.cube = new Cube(this.cubeDirection[3],"island4");
       this.environment = new Environment();
     });
   }
