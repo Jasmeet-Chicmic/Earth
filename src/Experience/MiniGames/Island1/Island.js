@@ -10,17 +10,17 @@ export default class Island1{
     constructor(){
         this.scene = new THREE.Scene();
         this.experience = new Experience();
-        let scene=new Scenes("island1")
+           this.scenes=new Scenes("island1")
         this.sceneloader=new Sceneloader();
-      this.sceneloader.loadScene(scene.scene);
-      this.addElements()
-      new Environment();
+      // this.sceneloader.loadScene(scene.scene);
+      // this.addElements()
+      // new Environment();
     }
     addElements=()=>{
       let model = this.experience.resources.items["portal2"].scene;
       // console.log(model.animation);
 
-    model.traverse(function (node) {
+    model.traverse((node)    => {
       if (node.isMesh) {
         // console.log(node.name)
 
@@ -28,9 +28,13 @@ export default class Island1{
         // console.log(node.animation.length)
 
         // node.material.side = THREE.DoubleSide
-        if(node.name=="cube.001"){
+        console.log(node.name,node.parent.name);
+        if(node.name=="Cube001"){
           console.log("ajskbfgjkadsb");
-node.scale.set(200,109,1000009)
+// node.scale.set(200,109,1000009)
+
+
+this.experience.cubes.push(node)
          }
           node.material.depthWrite=true
           node.material.transparent = false;

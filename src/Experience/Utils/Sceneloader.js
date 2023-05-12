@@ -32,7 +32,9 @@ export default class Sceneloader {
       case "Floor_Cone":
         console.log("Floor_Cone");
         break;
-
+        case "Cube001":
+          console.log("Cube001");
+          break;
       default:
         break;
     }
