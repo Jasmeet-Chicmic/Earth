@@ -5,6 +5,5 @@ export default class Scenes{
         this.scene = new THREE.Scene();
         this.scene.name = name;
         this.experience = new Experience();
-        this.experience.scenes.push(this.scene);
     }
 }

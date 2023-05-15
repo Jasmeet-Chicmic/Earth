@@ -16,7 +16,7 @@ export default class Experience {
       return instance;
     }
     instance = this;
-    this.scenes = [];
+    this.scenes ={};
     this.canvas = canvas;
     this.cubes = [];
     this.debug = new Debug();
@@ -30,7 +30,7 @@ export default class Experience {
 
     window.experience = new Experience();
     //Scene creatition
-    this.sceneClass = new Scenes("earth");
+    this.sceneClass = new Scenes("Earth");
     this.scene = this.sceneClass.scene;
 
     //resources
@@ -59,6 +59,7 @@ export default class Experience {
     this.camera.update();
     this.world.update();
     this.CameraMovement.update();
+    
     this.renderer.update();
   }
   resize() {

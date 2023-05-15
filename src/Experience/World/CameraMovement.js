@@ -35,11 +35,12 @@ export default class CameraMovement {
   }
 
   islandSelection(name) {
+    console.log(name, "from islandselection");
     this.sceneLoader.loadScene(name);
   }
 
   open = (name) => {
-    if (name.slice(0, name.length - 1) == "island") {
+    if (name.slice(0, name.length - 1) == "cube") {
       gsap
         .to(this.camera.instance.position, {
           duration: 3,
@@ -62,7 +63,7 @@ export default class CameraMovement {
   };
   onMouseClick = (event) => {
     this.touchabeobjects = this.experience.cubes;
-    console.log(this.touchabeobjects);
+    // console.log(this.touchabeobjects);
     if (this.isIntersected.length) {
       for (let i = 0; i < this.touchabeobjects.length; i++) {
         if (this.isIntersected[0].object.name == this.touchabeobjects[i].name) {

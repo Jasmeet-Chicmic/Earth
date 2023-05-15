@@ -20,4 +20,32 @@ export default [
     path: "/textures/environmentMap/MainBackgroundCubeTexture/",
     pictures: ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
   },
+  {
+    name: "characterAnimation",
+    type: "fbx",
+    path: "/models/FightingGame/Player/Animations/Char1@Death.FBX",
+  },
+  {
+    name: "characterAnimationJump",
+    type: "fbx",
+    path: "/models/FightingGame/Player/Animations/Char1@Jump.FBX",
+  },
+  {
+    name: "character",
+    type: "fbx",
+    path: "/models/FightingGame/Player/Model/PlayerRig.FBX",
+  },
+];
+
+export let FightingGameSources = [
+  {
+    name: "characterAnimation",
+    type: "fbx",
+    path: "/models/FightingGame/Player/Animations/Char1@Death.FBX",
+  },
+  {
+    name: "character",
+    type: "fbx",
+    path: "/models/FightingGame/Player/Model/PlayerRig.FBX",
+  },
 ];

@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import EventEmitter from "./EventEmitter";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 export default class Resources extends EventEmitter {
   constructor(sources) {
     super();
@@ -24,6 +25,7 @@ export default class Resources extends EventEmitter {
     this.loaders.gltfLoader = new GLTFLoader();
     this.loaders.textureLoader = new THREE.TextureLoader();
     this.loaders.cubeLoader = new THREE.CubeTextureLoader();
+    this.loaders.fbxLoader = new FBXLoader();
   }
 
   startLoading() {
@@ -50,6 +52,13 @@ export default class Resources extends EventEmitter {
               this.sourceLoaded(source, file);
             });
           break;
+
+        case "fbx":
+          this.loaders.fbxLoader.load(source.path, (file) => {
+            console.log("fbx", new THREE.AnimationMixer(file));
+            console.log("fbx", file);
+            this.sourceLoaded(source, file);
+          });
       }
     }
   }
