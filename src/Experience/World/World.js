@@ -3,6 +3,7 @@ import Experience from "../Experience";
 import Environment from "./Environment";
 import Earth from "./Earth";
 import Cube from "./Cube";
+import { touchableobjects } from "../Utils/Touchableconstants";
 export default class World {
   constructor() {
     this.experience = new Experience();
@@ -14,10 +15,10 @@ export default class World {
     this.resources.on("resourcesLoaded", () => {
       // console.log("resource loaded");
       this.earth = new Earth();
-      this.cube = new Cube(this.cubeDirection[0], "island1");
-      this.cube = new Cube(this.cubeDirection[1], "island2");
-      this.cube = new Cube(this.cubeDirection[2], "island3");
-      this.cube = new Cube(this.cubeDirection[3], "island4");
+      this.cube = new Cube(this.cubeDirection[0],    touchableobjects.CUBE1);
+      this.cube = new Cube(this.cubeDirection[1],    touchableobjects.CUBE2);
+      this.cube = new Cube(this.cubeDirection[2],    touchableobjects.CUBE3);
+      this.cube = new Cube(this.cubeDirection[3],    touchableobjects.CUBE4);
       this.experience.scene.background =
         this.experience.resources.items["background"];
       this.environment = new Environment();

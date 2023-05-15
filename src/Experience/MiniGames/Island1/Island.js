@@ -6,11 +6,12 @@ import Resources from "../../Utils/Resources";
 import Environment from "../../World/Environment";
 import Camera from "../../Camera";
 import {gsap} from   "gsap"
+import {  touchableobjectsarray    ,touchableobjects } from "../../Utils/Touchableconstants";
 export default class Island1{
     constructor(){
         this.scene = new THREE.Scene();
         this.experience = new Experience();
-           this.scenes=new Scenes("island1")
+           this.scenes=new Scenes(touchableobjects.ISLAND1)
         this.sceneloader=new Sceneloader();
       // this.sceneloader.loadScene(scene.scene);
       // this.addElements()
@@ -29,7 +30,7 @@ export default class Island1{
 
         // node.material.side = THREE.DoubleSide
         console.log(node.name,node.parent.name);
-        if(node.name=="Cube001"){
+        if(        touchableobjectsarray.includes    (node.name       )){
           console.log("ajskbfgjkadsb");
 // node.scale.set(200,109,1000009)
 
