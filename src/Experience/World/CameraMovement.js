@@ -43,7 +43,7 @@ export default class CameraMovement {
     if (name.slice(0, name.length - 1) == "cube") {
       gsap
         .to(this.camera.instance.position, {
-          duration: 3,
+          duration: 1,
           x: this.isIntersected[0].object.position.x / 0.9,
           y: this.isIntersected[0].object.position.y / 0.9,
           z: this.isIntersected[0].object.position.z / 0.9,

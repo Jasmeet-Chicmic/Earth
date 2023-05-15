@@ -16,8 +16,10 @@ export default class Sceneloader {
 
     switch (name) {
       case touchableobjects.CUBE1:
-        let scene = new Island1();
-        this.addWorld(scene);
+        // let scene = new Island1();
+        // this.addWorld(scene);
+        let gamePlayScene = new GamePlay();
+        this.addWorld(gamePlayScene);
         break;
       case touchableobjects.CUBE2:
         // new Island2();
@@ -25,8 +27,7 @@ export default class Sceneloader {
         this.addWorld(scene2);
         break;
       case touchableobjects.BALCONY_CONE:
-        let gamePlayScene = new GamePlay();
-        this.addWorld(gamePlayScene);
+       
         console.log("Balcony_Co");
         break;
       case touchableobjects.BOAT_CONE:

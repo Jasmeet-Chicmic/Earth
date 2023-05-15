@@ -42,7 +42,7 @@ export default class Island2 {
 
   moveCamera() {
     gsap.to(this.experience.camera.instance.position, {
-      duration: 4,
+      duration: 1,
       x: 200,
       y: 200,
       z: 200,

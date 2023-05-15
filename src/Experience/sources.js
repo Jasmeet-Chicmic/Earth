@@ -21,6 +21,11 @@ export default [
     pictures: ["px.png", "nx.png", "py.png", "ny.png", "pz.png", "nz.png"],
   },
   {
+    name: "gameBackground",
+    type: "texture",
+    path: "/models/FightingGame/Player/Textures/gameBackground2d.png",
+  },
+  {
     name: "characterAnimation",
     type: "fbx",
     path: "/models/FightingGame/Player/Animations/Char1@Death.FBX",
@@ -34,6 +39,11 @@ export default [
     name: "character",
     type: "fbx",
     path: "/models/FightingGame/Player/Model/PlayerRig.FBX",
+  },
+  {
+    name: "fightingGameFloor",
+    type: "gltfModel",
+    path: "/models/FightingGame/floor_stones_tilleable/scene.gltf",
   },
 ];
 

@@ -11,58 +11,66 @@ import {
   touchableobjects,
 } from "../../Utils/Touchableconstants";
 import Time from "../../Utils/Time";
+import Sizes from "../../Utils/Sizes";
 export default class GamePlay {
   constructor() {
     this.scene = new THREE.Scene();
     this.experience = new Experience();
     this.scenes = new Scenes("GamePlay");
+    this.scenes.scene.background = "#ffffff";
     this.time = new Time();
     this.sceneloader = new Sceneloader();
   }
+
   addElements = () => {
-    //testing
-    let animation =
-      this.experience.resources.items["characterAnimation"].animations;
-    let jump =
-      this.experience.resources.items["characterAnimationJump"].animations;
-    let model = this.experience.resources.items["character"];
-    this.touchableObject = touchableobjectsarray;
-    // model.animations = animation;
-    model.animations = [...jump, ...animation];
-    // model.traverse((node) => {
-    //   if (node.isMesh) {
-    //     node.material.depthWrite = true;
-    //     node.material.transparent = false;
-    //     node.position.setZ(node.position.z);
-    //     //     if (this.touchableObject.includes(node.name))
-    //     //       this.experience.cubes.push(node);
-    //   }
-    // });
-    this.animation = {};
-    this.animation.mixer = new THREE.AnimationMixer(model);
-    this.animation.actions = {};
-    this.animation.actions.idle = this.animation.mixer.clipAction(
-      model.animations[1]
-    );
-    // this.animation.actions.walking = this.animation.mixer.clipAction(model.animations[1]);
-    // this.animation.actions.running = this.animation.mixer.clipAction(model.animations[2]);
+    this.addCharacter();
+    let camera = new Camera(42, 4);
+    camera.instance.position.set(0, -90, 300);
 
-    this.animation.actions.current = this.animation.actions.idle;
-    this.experience.scene.background = "#fffff";
-    this.experience.scene.add(model);
-    this.animation.actions.current.play();
-    // model.animations = animation;
-    // let mixer = new THREE.AnimationMixer(model);
-    // let clip = mixer.clipAction(model.animations[0]);
-    // setInterval(() => {
-    //   console.log(clip.isRunning());
-    // }, 1000);
-    // this.experience.scene.add(model);
-    // clip.play();
+    this.experience.camera = camera;
 
-    this.experience.camera = new Camera(42, 4);
+    this.addFloor();
+    this.playAnimation();
     this.update();
   };
+
+  playAnimation() {
+    // testing;
+    let animation =
+      this.experience.resources.items["characterAnimation"].animations;
+    this.model = this.experience.resources.items["character"];
+    this.touchableObject = touchableobjectsarray;
+    // model.animations = animation;
+
+    this.model.animations = [...animation];
+
+    this.animation = {};
+    this.animation.mixer = new THREE.AnimationMixer(this.model);
+    this.animation.actions = {};
+    this.animation.actions.idle = this.animation.mixer.clipAction(
+      this.model.animations[0]
+    );
+
+    this.animation.actions.current = this.animation.actions.idle;
+    this.experience.scene.background = this.experience.scene.add(this.model);
+    this.animation.actions.current.play();
+  }
+
+  addCharacter() {
+    this.model = this.experience.resources.items["character"];
+    this.model.position.y = -100;
+    this.model.rotation.y = Math.PI * 0.5;
+    this.experience.scene.add(this.model);
+  }
+
+  addFloor() {
+    this.floor = this.experience.resources.items["fightingGameFloor"].scene;
+    this.floor.traverse((node) => {
+      (node.position.x = 0), (node.position.y = 0), (node.position.z = -1);
+      //   node.rotation.z = Math.PI * 0.5;
+    });
+    this.experience.scene.add(this.floor);
+  }
 
   update = () => {
     this.animation.mixer.update(this.time.delta / 1000);
