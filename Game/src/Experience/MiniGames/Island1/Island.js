@@ -38,9 +38,6 @@ export default class Island1{
 this.experience.cubes.push(node)
          }
           node.material.depthWrite=true
-          node.material.transparent = false;
-        node.material.depthWrite = true;
-        node.material.transparent = false;
         // node.material.wireframe = true;
         // node.material.opacity = 1
         // console.log(node)

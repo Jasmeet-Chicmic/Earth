@@ -1,7 +1,11 @@
 import * as THREE from "three";
 import EventEmitter from "./EventEmitter";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+<<<<<<< HEAD
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
+=======
+// import { data } from "./directoryFileList";
+>>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8
 export default class Resources extends EventEmitter {
   constructor(sources) {
     super();
@@ -25,7 +29,10 @@ export default class Resources extends EventEmitter {
     this.loaders.gltfLoader = new GLTFLoader();
     this.loaders.textureLoader = new THREE.TextureLoader();
     this.loaders.cubeLoader = new THREE.CubeTextureLoader();
+<<<<<<< HEAD
     this.loaders.fbxLoader = new FBXLoader();
+=======
+>>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8
   }
 
   startLoading() {
@@ -52,6 +59,7 @@ export default class Resources extends EventEmitter {
               this.sourceLoaded(source, file);
             });
           break;
+<<<<<<< HEAD
 
         case "fbx":
           this.loaders.fbxLoader.load(source.path, (file) => {
@@ -59,6 +67,8 @@ export default class Resources extends EventEmitter {
             console.log("fbx", file);
             this.sourceLoaded(source, file);
           });
+=======
+>>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8
       }
     }
   }
@@ -68,7 +78,12 @@ export default class Resources extends EventEmitter {
 
     this.loaded++;
     if (this.loaded == this.toLoad) {
+<<<<<<< HEAD
       this.trigger("resourcesLoaded");
+=======
+      this.trigger("resourcesLoaded");      
+      // this.off("resourcesLoaded");
+>>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8
     }
   }
 }
