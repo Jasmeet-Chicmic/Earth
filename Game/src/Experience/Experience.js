@@ -5,7 +5,7 @@ import Time from "./Utils/Time";
 import * as THREE from "three";
 import World from "./World/World";
 import Resources from "./Utils/Resources";
-import          {FightingGameSources, sources} from "./sources";
+import { FightingGameSources, sources } from "./sources";
 import Debug from "./Utils/Debug";
 import CameraMovement from "./World/CameraMovement";
 import Scenes from "./Scenes";
@@ -17,7 +17,7 @@ export default class Experience {
       return instance;
     }
     instance = this;
-    this.scenes ={};
+    this.scenes = {};
     this.canvas = canvas;
     this.cubes = [];
     this.debug = new Debug();
@@ -29,11 +29,9 @@ export default class Experience {
       this.resize();
     });
 
-
     //Scene creatition
     this.sceneClass = new Scenes("Earth");
     this.scene = this.sceneClass.scene;
-
 
     //resources
     this.resources = new Resources(sources);
@@ -53,25 +51,12 @@ export default class Experience {
     //CameraMovement
     this.CameraMovement = new CameraMovement();
 
-
-
-    
-
-    
-getData().then((data)=>{
-      console.log("data",data)   
+    getData().then((data) => {
+      console.log("data", data);
       FightingGameSources.push(...data);
       console.log(FightingGameSources);
     });
 
-
-    
-
-    
-
-    
-
-   
     //time tick events
   }
 

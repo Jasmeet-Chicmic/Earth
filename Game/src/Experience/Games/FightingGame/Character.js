@@ -5,7 +5,7 @@ export default class Character {
     this.experience = new Experience();
   }
 
-  addCharacter(name,position) {
+  addCharacter(name, position) {
     this.model = this.experience.resources.items[name];
     this.model.position.y = position.y;
     this.model.rotation.y = Math.PI * 0.5;

@@ -1,5 +1,4 @@
 import * as lil from "lil-gui";
-<<<<<<< HEAD
 import Experience from "../Experience";
 import GamePlay from "../Games/FightingGame/GamePlay";
 export default class Debug {
@@ -29,13 +28,3 @@ export default class Debug {
     }
   }
 }
-=======
-export default class Debug{
-    constructor(){
-       this.active = window.location.hash === "#debug";
-       if(this.active){
-        this.gui = new lil.GUI();
-       }
-    }
-}
->>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8

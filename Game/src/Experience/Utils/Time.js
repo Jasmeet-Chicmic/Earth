@@ -7,15 +7,9 @@ export default class Time extends EventEmitter {
     this.current = this.start;
     this.elapsed = 0;
     this.delta = 16; // default delta time for most of the screens is 16
-<<<<<<< HEAD
     window.requestAnimationFrame(() => {
       this.tick();
     });
-=======
-    // window.requestAnimationFrame(() => {
-      this.tick();
-    // });
->>>>>>> 97ccfeb1b1b47f5d5f5b2f0b11697a0d6b4773b8
   }
 
   tick() {
